@@ -3,7 +3,9 @@ package cucumberbdd.factory;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 
 public class DriverFactory {
     // should be static so methods will also be static
@@ -22,6 +24,10 @@ public class DriverFactory {
                 //System.setProperty("webdriver.gecko.driver", "E:\\Testing\\Selenium\\Drivers\\firefox\\0.31.0\\geckodriver.exe");
                 WebDriverManager.firefoxdriver().setup(); // Driver manager to handle browser versions
                 driver = new FirefoxDriver();
+            }
+            case "edge" -> {
+                WebDriverManager.edgedriver().setup(); // Driver manager to handle browser versions
+                driver = new EdgeDriver();
             }
             default -> throw new IllegalStateException("Invalid browser type: " + browser);
         }
